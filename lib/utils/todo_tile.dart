@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ToDoTile extends StatelessWidget {
   // String and Bool
   final String taskName;
@@ -17,7 +18,7 @@ class ToDoTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, top: 25.0, right: 25.0),
       child: Container(
-        padding: EdgeInsets.all(24.0),
+        padding: const EdgeInsets.all(24.0),
         decoration: BoxDecoration(
           color: Colors.yellow,
           borderRadius: BorderRadius.circular(12.0),
