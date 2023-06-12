@@ -1,10 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_todo_app/utils/my_button.dart";
 
+// ignore: must_be_immutable
 class DialogBox extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final controller;
-  const DialogBox({super.key, required this.controller});
+  VoidCallback onSave;
+  VoidCallback onCancel;
+
+  DialogBox(
+      {super.key,
+      required this.controller,
+      required this.onSave,
+      required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +37,10 @@ class DialogBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   // save button
-                  MyButton(text: "Save", onPressed: () {}),
+                  MyButton(text: "Save", onPressed: onSave),
                   const SizedBox(width: 8),
                   // cancel button
-                  MyButton(text: "Cancel", onPressed: () {}),
+                  MyButton(text: "Cancel", onPressed: onCancel),
                 ],
               )
             ],
