@@ -10,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   // text controller
   final _controller = TextEditingController();
 
@@ -30,9 +29,10 @@ class _HomePageState extends State<HomePage> {
   // save news task
   void saveNewTask() {
     setState(() {
-      toDoList.add([ _controller.text, false]);
+      toDoList.add([_controller.text, false]);
     });
     Navigator.of(context).pop();
+    _controller.clear();
   }
 
   // create a new task
@@ -46,6 +46,13 @@ class _HomePageState extends State<HomePage> {
             onCancel: () => Navigator.of(context).pop(),
           );
         });
+  }
+
+  // delete a task
+  void deleteTask(int index) {
+    setState(() {
+      toDoList.removeAt(index);
+    });
   }
 
   @override
@@ -69,6 +76,7 @@ class _HomePageState extends State<HomePage> {
             taskName: toDoList[index][0],
             taskCompleted: toDoList[index][1],
             onChanged: (value) => checkBoxChanged(value, index),
+            deleteFunction: (context) => deleteTask(index),
           );
         },
       ),
